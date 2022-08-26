@@ -2,6 +2,7 @@ import { useState } from "react";
 import React, {Component} from "react";
 import NextPreButton from "./NextPreButton";
 import Images from "./Images";
+import isCorrect from "../model/isCorrect";
 
 
 
@@ -137,13 +138,15 @@ const Questions = () =>{
     };
 
     const showCorrectAnswer = () =>{
-            if(input === qanda[currentQuestion].correctAnswer){
+            const result = isCorrect(qanda[currentQuestion], input)
+
+            if(result){
                 setAnswer(`You are right, correct answer is ${qanda[currentQuestion].correctAnswer}`)
                 setScore(score + 1)
                 setToggle(!toggle)
                 console.log(score)
                 
-            }else if(input!== qanda[currentQuestion].correctAnswer){
+            }else{
                 setAnswer(`You are wrong, correct answer is ${qanda[currentQuestion].correctAnswer}`)
                 setToggle(!toggle)
             }

@@ -1,9 +1,4 @@
-const isCorrect = (question, answer) =>{
-   return question.correctAnswer === answer
-   
-}
-
-
+const isCorrect = require("../src/model/isCorrect")
 
 describe("isCorrect", ()=>{
     describe("when given the correct answer", ()=>{

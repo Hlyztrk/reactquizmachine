@@ -1,5 +1,6 @@
 const isCorrect = (question, answer) =>{
-    return true
+   return question.correctAnswer === answer
+   
 }
 
 
@@ -17,6 +18,21 @@ describe("isCorrect", ()=>{
             const result = isCorrect(question,answer)
 
             expect(result).toBeTruthy()
+        })
+    })
+
+    describe("when given the wrong answer", ()=>{
+        it("should return false", ()=>{
+            const question = {
+                id:8,
+                question : "What brand of beer does Homer Simpson drink?",
+                correctAnswer : "Duff beer"
+            }
+            const answer = "Facebook"
+
+            const result = isCorrect(question,answer)
+
+            expect(result).toBeFalsy()
         })
     })
 })
